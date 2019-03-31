@@ -1,0 +1,48 @@
+{{>header}}
+{{>headerAspirante}}
+
+<div class="row mr-0 justify-content-md-center align-items-center">
+    <div class="col-sm-12 p-4">
+        <h2> Bienvenido a la aplicación para inscripción a un curso </h2>
+        <p style="font-size: 16pt">Ingrese los siguientes campos: </p>
+    </div>
+
+</div>
+
+<form action="/inscritos" method="post">
+    <div class="form-row px-4">
+        <div class="form-group col-md-4">
+            Confirme su documento de Identidad:
+            <input type="number" class="form-control" size="30" maxlength="30" placeholder="Cédula o documento de identidad"
+                name="cedula" required>
+        </div>
+        <!-- <div class="form-group col-md-4">
+            Nombre:
+            <input type="text" class="form-control" aria-describedby="emailHelp" size="30" maxlength="100" placeholder="Nombre Completo"
+                name="nombre" required>
+        </div>
+        <div class="form-group col-md-4">
+            Email:
+            <input type="text" class="form-control" aria-describedby="emailHelp" size="30" maxlength="100" placeholder="Correo Electrónico"
+                name="email" required>
+        </div>
+        <div class="form-group col-md-4">
+            Telefono:
+            <input type="number" class="form-control" size="30" maxlength="30" placeholder="Telefono" name="tel"
+                required>
+        </div> -->
+    </div>
+    <div class="form-row px-4">
+        <div class="form-group col-md-6">
+            Seleccione el curso para la inscripción:
+            <select class="form-control" name="nombreCurso" required>
+                {{{Nombre_Cursos}}}
+            </select>
+        </div>
+    </div>
+    <div class="form-row px-4">
+        <button class="btn btn-primary"> Realizar la inscripción </button>
+    </div>
+</form>
+
+{{>footer}}

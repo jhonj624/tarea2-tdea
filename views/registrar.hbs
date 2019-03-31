@@ -1,0 +1,38 @@
+{{>header}}
+{{>headerIndex}}
+
+<div class="row mr-0 justify-content-md-center align-items-center">
+    <div class="col-sm-12 p-4">
+        <h2> Bienvenido </h2>
+        <p style="font-size: 16pt">Complete los siguientes campos para realizar el ingreso a la aplicación: </p>
+    </div>
+
+</div>
+<div class="container px-5">
+    <form action="/registro" method="post">
+        <div class="form-row px-5 my-5 border border-dark">
+            <div class="form-group col-md-6 mt-4">
+                Nombre:
+                <input type="text" class="form-control" size="30" maxlength="30" placeholder="Nombre Completo" name="nombre" required>
+            </div>
+            <div class="form-group col-md-6 mt-4">
+                Documento de identidad:
+                <input type="number" class="form-control" size="30" maxlength="30" placeholder="Número de identificacion" name="id" required>
+            </div>
+            <div class="form-group col-md-6">
+                Email:
+                <input type="text" class="form-control" aria-describedby="emailHelp" size="30" maxlength="100" placeholder="Correo Electrónico"
+                    name="email" required>
+            </div>
+            <div class="form-group col-md-6">
+                Telefono:
+                <input type="number" class="form-control" size="30" maxlength="30" placeholder="Telefono" name="tel" required>
+            </div>
+
+            <div class="form-row my-4 mx-auto">
+                <button class="btn btn-dark btn-responsive h-100"> Registrar </button>
+            </div>
+    </form>
+    </div>
+
+    {{>footer}}
