@@ -1,3 +1,4 @@
+require('../config/config');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -282,7 +283,7 @@ app.post('/editado', (req, res) => {
 
 app.get('*', (req, res) => res.render('error'));
 
-let port = 3000;
+let port = process.env.PORT;
 app.listen(port, () => {
     console.log(`Escuchando en el puerto ${port}`);
 })
