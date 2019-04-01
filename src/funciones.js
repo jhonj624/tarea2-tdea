@@ -196,19 +196,38 @@ const mostrar = () => {
 
 }
 
-const mostrar_mis_cursos = () => {
+const mostrar_mis_cursos = (cambia) => {
     // Cargar la lista de aspirantes y sus respectivos cursos
     listarInscritos();
     // Cargar los cursos 
     leer_id();
     let texto;
     misCursos = listaInscritos.filter(mc => mc.id == identificacion);
-    console.log(misCursos);
+    // elimino un curso si es el caso
+    if (cambia) {
+        // borrar en el archivo listadoInscritos.json
+        cursoBorrar = misCursos[cambia - 1];
+        console.log(cursoBorrar);
+        // busco el index que contenga el id del aspirante y el nombre del curso
+        index = listaInscritos.findIndex(
+                curso => {
+                    return (curso.id === cursoBorrar.id && curso.curso === cursoBorrar.curso)
+                }
+            )
+            //console.log("index" + index);
+            // Elimino el curso en cuestión
+        listaInscritos.splice(index, 1);
+        guardarInscritos();
+        // actualizo mi lista particular
+        misCursos.splice(cambia - 1, 1);
+
+    }
+    //console.log(misCursos);
     if (misCursos.length == 0) {
         texto = `<div class = 'alert alert-danger' role = 'alert'><h4 class="alert-heading"> <br> No tiene cursos inscritos </h4><hr></div>`
 
     } else {
-        let size = Object.keys(listaInscritos).length;
+        //let size = Object.keys(listaInscritos).length;
         texto = "<table class='table table-striped'>\
     <thead class='thead-dark'>\
         <th> # </th>\
@@ -223,7 +242,12 @@ const mostrar_mis_cursos = () => {
         <tr>
         <td>${i}</td>
         <td>${curso.curso}</td>
-        <td>'Cancelar'</td>
+        <td><form action="/verMisCursos" method="post" class = "float-right form-inline">
+                
+                <button class="btn btn-outline-dark btn-sm" type="submit" name="curso_id" value=${i}>Eliminar</button> 
+                                
+            </form>
+            </td>
         </tr>`
         })
         texto = texto + '</tbody> </table>';

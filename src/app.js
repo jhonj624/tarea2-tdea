@@ -129,14 +129,14 @@ app.post('/ver', (req, res) => {
 // Se muestra al usuario sus cursos inscritos
 app.post('/verMisCursos', (req, res) => {
     // obtengo el id del aspirante
-    id = req.body.id;
-    //misCursos = funciones.mostrarMisCursos();
-    //let misCursos = "<p>Mis cursos inscritos </p>"
-    // Filtro los cursos inscritos con el id 
-    let infoMisCursos = funciones.mostrar_mis_cursos();
-    res.render('verMisCursos', {
-        informacion: infoMisCursos,
-    });
+    cambia = req.body.curso_id;
+    console.log(cambia);
+
+
+    let infoMisCursos = funciones.mostrar_mis_cursos(cambia);
+    res.render('verMisCursos', { informacion: infoMisCursos });
+
+
 });
 
 app.post('/inscribir', (req, res) => {
@@ -177,6 +177,7 @@ app.post('/inscritos', (req, res) => {
 
 app.post('/verInscritos', (req, res) => {
 
+    // lee si se seleccionó un curso para cerrar
     cambia = req.body.gridRadios;
 
     if (!cambia) {
